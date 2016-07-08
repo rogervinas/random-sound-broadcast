@@ -6,20 +6,20 @@ var host = process.env.IP || '0.0.0.0';
 var port = process.env.PORT || 8080;
 
 var sounds = [
-    "PartyHornSound",
-    "CowMoo",
-    "TrainHonkHornClear",
-    "FogHorn",
-    "AirHorn",
-    "TrainHornLow",
-    "BoatHorn",
-    "GlassPing",
-    "RobotBlip",
-    "RobotBlip2",
-    "Ting",
-    "MarioJumping",
-    "ElevatorDing",
-    "AirPlaneDing",
+    'PartyHornSound',
+    'CowMoo',
+    'TrainHonkHornClear',
+    'FogHorn',
+    'AirHorn',
+    'TrainHornLow',
+    'BoatHorn',
+    'GlassPing',
+    'RobotBlip',
+    'RobotBlip2',
+    'Ting',
+    'MarioJumping',
+    'ElevatorDing',
+    'AirPlaneDing'
 ]
 
 function getRandomInt(min, max) {
@@ -47,7 +47,7 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function(socket){
-    console.log('connection client ' + socket.id)
+    console.log('connection client ' + socket.id);
 });
 
 http.listen(port, host, function(){
