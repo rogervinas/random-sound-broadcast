@@ -5,6 +5,12 @@ var io = require('socket.io')(http);
 var host = process.env.IP || '0.0.0.0';
 var port = process.env.PORT || 8080;
 
+var clientCount = 0;
+function clientCountPlus(plus) {
+    clientCount += plus;
+    console.log('client count ' + clientCount);
+}
+
 var sounds = [
     'PartyHornSound',
     'CowMoo',
@@ -47,7 +53,12 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function(socket){
-    console.log('connection client ' + socket.id);
+    console.log('client connection ' + socket.id);
+    clientCountPlus(1);
+    socket.on('disconnect', function() {
+        console.log('client disconnection ' + socket.id);
+        clientCountPlus(-1);
+    });
 });
 
 http.listen(port, host, function(){
