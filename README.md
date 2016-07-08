@@ -6,7 +6,7 @@ Powered by [nodejs](https://nodejs.org)
 
 ## Setup environment
 
-Execute npm install`
+Execute `npm install`
 
 ## Run server locally
 
