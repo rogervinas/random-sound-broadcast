@@ -2,6 +2,9 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+var host = process.env.IP
+var port = process.env.PORT
+
 var sounds = [
     "PartyHornSound",
     "CowMoo",
@@ -47,8 +50,8 @@ io.on('connection', function(socket){
     console.log('connection client ' + socket.id)
 });
 
-http.listen(3000, function(){
-    console.log('listening on *:3000');
+http.listen(port, host, function(){
+    console.log('listening on ' + host + ':' + port);
     for(i=0; i<5; i++) {
         emitRandomSoundLoop();
     }
