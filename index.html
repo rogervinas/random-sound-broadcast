@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Random Sound Broadcast</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        body {
+            display: table;
+        }
+
+        .block {
+            font-family: courier;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+        </style>
+  </head>
+  <body>
+    <audio id="sound-PartyHornSound" src="http://soundbible.com/grab.php?id=1817&type=mp3"></audio>
+    <audio id="sound-CowMoo" src="http://soundbible.com/grab.php?id=1778&type=mp3"></audio>
+    <audio id="sound-TrainHonkHornClear" src="http://soundbible.com/grab.php?id=1696&type=mp3"></audio>
+    <audio id="sound-FogHorn" src="http://soundbible.com/grab.php?id=1594&type=mp3"></audio>
+    <audio id="sound-AirHorn" src="http://soundbible.com/grab.php?id=1542&type=mp3"></audio>
+    <audio id="sound-TrainHornLow" src="http://soundbible.com/grab.php?id=1455&type=mp3"></audio>
+    <audio id="sound-BoatHorn" src="http://soundbible.com/grab.php?id=350&type=mp3"></audio>
+    <audio id="sound-GlassPing" src="http://soundbible.com/grab.php?id=2084&type=mp3"></audio>
+    <audio id="sound-RobotBlip" src="http://soundbible.com/grab.php?id=1682&type=mp3"></audio>
+    <audio id="sound-RobotBlip2" src="http://soundbible.com/grab.php?id=1669&type=mp3"></audio>
+    <audio id="sound-Ting" src="http://soundbible.com/grab.php?id=1628&type=mp3"></audio>
+    <audio id="sound-MarioJumping" src="http://soundbible.com/grab.php?id=1601&type=mp3"></audio>
+    <audio id="sound-ElevatorDing" src="http://soundbible.com/grab.php?id=1441&type=mp3"></audio>
+    <audio id="sound-AirPlaneDing" src="http://soundbible.com/grab.php?id=1424&type=mp3"></audio>
+    <div class="block">
+      <h1 id="text">Silence</h1>
+    </div>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var socket = io();
+      socket.on('sound', function(soundId) {
+        console.log('sound ' + soundId);
+        var sound = $('#sound-' + soundId);
+        if(sound != null) {
+          $('#text').text(soundId);
+          sound.trigger('play');
+        }
+      });
+    </script>
+  </body>
+</html>
