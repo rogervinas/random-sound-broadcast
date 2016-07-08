@@ -14,4 +14,4 @@ Execute `node index.js`
 
 ## Run client locally
 
-Browse `http://localhost:3000`
+Browse `http://localhost:8080`
